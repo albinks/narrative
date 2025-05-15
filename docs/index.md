@@ -28,7 +28,7 @@ It transforms domain definitions into Intention Dependency Graphs (IDGs), serves
 pip install narrative
 ```
 
-For more installation options, see the [Installation Guide](https://org.github.io/narrative/guides/installation/).
+For more installation options, see the [Installation Guide](guides/installation.md).
 
 ## Quick Example
 
@@ -75,16 +75,6 @@ story = renderer.render(ranked_trajectories[0])
 print(story)
 ```
 
-## Documentation
-
-For full documentation, visit [org.github.io/narrative](https://org.github.io/narrative).
-
-- [Installation Guide](https://org.github.io/narrative/guides/installation/)
-- [Quick Start Guide](https://org.github.io/narrative/guides/quick-start/)
-- [Core Concepts](https://org.github.io/narrative/guides/concepts/)
-- [API Reference](https://org.github.io/narrative/api/idg-engine/)
-- [Examples](https://org.github.io/narrative/examples/little-red/)
-
 ## Why Narrative?
 
 ### For Game Developers
@@ -105,67 +95,16 @@ For full documentation, visit [org.github.io/narrative](https://org.github.io/na
 - Generate story outlines and drafts based on character intentions
 - Experiment with different narrative structures and dependencies
 
-## Development Setup
+## Getting Started
 
-### Prerequisites
-
-- Python 3.12+
-- [Poetry](https://python-poetry.org/docs/#installation) for dependency management
-
-### Setting up the development environment
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/org/narrative.git
-   cd narrative
-   ```
-
-2. Install dependencies:
-   ```bash
-   poetry install --with dev
-   ```
-
-3. Install pre-commit hooks:
-   ```bash
-   poetry run pre-commit install
-   ```
-
-Pre-commit will now run automatically on every commit to ensure code quality. The hooks include:
-- black (code formatting)
-- mypy (static type checking)
-- ruff (linting)
-- isort (import sorting)
-
-You can also run the hooks manually on all files:
-```bash
-poetry run pre-commit run --all-files
-```
+- [Installation Guide](guides/installation.md): How to install Narrative
+- [Quick Start Guide](guides/quick-start.md): Create your first narrative
+- [Core Concepts](guides/concepts.md): Learn about the key concepts behind Narrative
 
 ## Contributing
 
-Contributions are welcome! To contribute:
-
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature-name`
-3. Commit your changes: `git commit -m 'Add some feature'`
-4. Push to the branch: `git push origin feature-name`
-5. Submit a pull request
-
-For more details, see the [Contributing Guide](https://org.github.io/narrative/contributing/).
+Contributions are welcome! See the [Contributing Guide](contributing.md) for more information.
 
 ## License
 
-Narrative is licensed under the MIT License. See the [LICENSE](LICENSE) file for more information.
-
-## Citation
-
-If you use Narrative in your research, please cite it as:
-
-```bibtex
-@software{narrative2025,
-  author = {Narrative Contributors},
-  title = {Narrative: A Python library for narrative generation},
-  year = {2025},
-  url = {https://github.com/org/narrative},
-}
-```
+Narrative is licensed under the MIT License. See the [LICENSE](https://github.com/org/narrative/blob/main/LICENSE) file for more information.
