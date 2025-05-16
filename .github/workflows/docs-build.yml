@@ -22,27 +22,27 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    
+
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
         python-version: '3.12'
-    
+
     - name: Install Poetry
       uses: snok/install-poetry@v1
       with:
         version: 1.5.1
         virtualenvs-create: true
         virtualenvs-in-project: true
-    
+
     - name: Install dependencies
       run: |
         poetry install --with docs
-    
+
     - name: Build documentation
       run: |
         poetry run mkdocs build --strict
-    
+
     - name: Upload documentation artifact
       uses: actions/upload-artifact@v3
       with:
@@ -56,23 +56,23 @@ jobs:
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     steps:
     - uses: actions/checkout@v3
-    
+
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
         python-version: '3.12'
-    
+
     - name: Install Poetry
       uses: snok/install-poetry@v1
       with:
         version: 1.5.1
         virtualenvs-create: true
         virtualenvs-in-project: true
-    
+
     - name: Install dependencies
       run: |
         poetry install --with docs
-    
+
     - name: Deploy documentation
       run: |
         poetry run mkdocs gh-deploy --force

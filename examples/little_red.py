@@ -5,10 +5,13 @@ This example demonstrates how to use Narrative to create a simple narrative base
 the Little Red Riding Hood story.
 """
 
-from narrative import Domain, IDGBuilder, TrajectoryExplorer, LLMRenderer
+from narrative.core.idg_builder import IDGBuilder
+from narrative.core.trajectory_explorer import TrajectoryExplorer
+from narrative.llm.llm_renderer import LLMRenderer
+from narrative.schemas.domain import Domain
 
 
-def main():
+def main() -> None:
     """Run the Little Red Riding Hood example."""
     # Define the domain
     domain = Domain(
@@ -70,47 +73,65 @@ def main():
                 "from_intention": "deliver_basket",
                 "to_intention": "visit_grandmother",
                 "type": "intentional",
-                "description": "Little Red must visit Grandmother to deliver the basket",
+                "description": (
+                    "Little Red must visit Grandmother to deliver the basket"
+                ),
             },
             {
                 "from_intention": "eat_little_red",
                 "to_intention": "visit_grandmother",
                 "type": "motivational",
-                "description": "The Wolf wants to eat Little Red because she is visiting Grandmother",
+                "description": (
+                    "The Wolf wants to eat Little Red because she is visiting"
+                    " Grandmother"
+                ),
             },
             {
                 "from_intention": "eat_grandmother",
                 "to_intention": "visit_grandmother",
                 "type": "motivational",
-                "description": "The Wolf wants to eat Grandmother because Little Red is visiting her",
+                "description": (
+                    "The Wolf wants to eat Grandmother because Little Red is"
+                    " visiting her"
+                ),
             },
             {
                 "from_intention": "rescue_little_red",
                 "to_intention": "eat_little_red",
                 "type": "motivational",
-                "description": "The Hunter wants to rescue Little Red because the Wolf ate her",
+                "description": (
+                    "The Hunter wants to rescue Little Red because the Wolf ate her"
+                ),
             },
             {
                 "from_intention": "rescue_grandmother",
                 "to_intention": "eat_grandmother",
                 "type": "motivational",
-                "description": "The Hunter wants to rescue Grandmother because the Wolf ate her",
+                "description": (
+                    "The Hunter wants to rescue Grandmother because the Wolf ate her"
+                ),
             },
             {
                 "from_intention": "kill_wolf",
                 "to_intention": "eat_little_red",
                 "type": "motivational",
-                "description": "The Hunter wants to kill the Wolf because it ate Little Red",
+                "description": (
+                    "The Hunter wants to kill the Wolf because it ate Little Red"
+                ),
             },
             {
                 "from_intention": "kill_wolf",
                 "to_intention": "eat_grandmother",
                 "type": "motivational",
-                "description": "The Hunter wants to kill the Wolf because it ate Grandmother",
+                "description": (
+                    "The Hunter wants to kill the Wolf because it ate Grandmother"
+                ),
             },
         ],
         name="Little Red Riding Hood",
-        description="A classic fairy tale about a little girl, her grandmother, and a wolf.",
+        description=(
+            "A classic fairy tale about a little girl, her grandmother, and a wolf."
+        ),
     )
 
     # Build the IDG
@@ -161,7 +182,10 @@ def main():
         print("\nVisualizing the IDG...")
         idg.visualize()
     except ImportError:
-        print("\nMatplotlib is required for visualization. Install it with 'pip install matplotlib'.")
+        print(
+            "\nMatplotlib is required for visualization. Install it with 'pip install"
+            " matplotlib'."
+        )
 
 
 if __name__ == "__main__":

@@ -4,13 +4,13 @@ Core Package
 This package contains the core components of the Narrative library.
 """
 
-from narrative.core.idg_builder import IDGBuilder, IDG
+from narrative.core.idg_builder import IDG, IDGBuilder
 from narrative.core.trajectory_explorer import (
-    TrajectoryExplorer,
-    Trajectory,
-    NoveltyMetric,
     CoherenceMetric,
     DramaMetric,
+    NoveltyMetric,
+    Trajectory,
+    TrajectoryExplorer,
 )
 
 __all__ = [

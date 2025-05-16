@@ -1,15 +1,13 @@
 """
 Tests for the IDG Builder.
 
-This module contains tests for the IDGBuilder class, which builds an Intention Dependency Graph (IDG)
+This module contains tests for the IDGBuilder class,
+    which builds an Intention Dependency Graph (IDG)
 from a domain.
 """
 
-import pytest
-import networkx as nx
-
-from narrative.schemas.domain import Domain, Intention, Dependency
-from narrative.core.idg_builder import IDGBuilder, IDG
+from narrative.core.idg_builder import IDG, IDGBuilder
+from narrative.schemas.domain import Domain
 
 
 def test_idg_builder_initialization():
@@ -27,7 +25,7 @@ def test_idg_builder_initialization():
         ],
         dependencies=[],
     )
-    
+
     builder = IDGBuilder(domain)
     assert builder.domain == domain
 
@@ -59,10 +57,10 @@ def test_idg_builder_build():
             }
         ],
     )
-    
+
     builder = IDGBuilder(domain)
     idg = builder.build()
-    
+
     assert isinstance(idg, IDG)
     assert len(idg.nodes) == 2
     assert len(idg.edges) == 1
@@ -87,11 +85,11 @@ def test_idg_builder_validate():
         ],
         dependencies=[],
     )
-    
+
     builder = IDGBuilder(domain)
     errors = builder.validate()
     assert len(errors) == 0
-    
+
     # Invalid domain with non-existent character
     domain = Domain(
         characters=["little_red", "wolf", "grandmother", "hunter"],
@@ -106,12 +104,12 @@ def test_idg_builder_validate():
         ],
         dependencies=[],
     )
-    
+
     builder = IDGBuilder(domain)
     errors = builder.validate()
     assert len(errors) == 1
     assert "non_existent_character" in errors[0]
-    
+
     # Invalid domain with non-existent location
     domain = Domain(
         characters=["little_red", "wolf", "grandmother", "hunter"],
@@ -126,12 +124,12 @@ def test_idg_builder_validate():
         ],
         dependencies=[],
     )
-    
+
     builder = IDGBuilder(domain)
     errors = builder.validate()
     assert len(errors) == 1
     assert "non_existent_location" in errors[0]
-    
+
     # Invalid domain with non-existent intention in dependency
     domain = Domain(
         characters=["little_red", "wolf", "grandmother", "hunter"],
@@ -152,7 +150,7 @@ def test_idg_builder_validate():
             }
         ],
     )
-    
+
     builder = IDGBuilder(domain)
     errors = builder.validate()
     assert len(errors) == 1
@@ -197,27 +195,27 @@ def test_idg_methods():
             },
         ],
     )
-    
+
     builder = IDGBuilder(domain)
     idg = builder.build()
-    
+
     # Test get_root_intentions
     root_intentions = idg.get_root_intentions()
     assert len(root_intentions) == 1
     assert "visit_grandmother" in root_intentions
-    
+
     # Test get_leaf_intentions
     leaf_intentions = idg.get_leaf_intentions()
     assert len(leaf_intentions) == 2
     assert "deliver_basket" in leaf_intentions
     assert "eat_little_red" in leaf_intentions
-    
+
     # Test get_intention_data
     intention_data = idg.get_intention_data("visit_grandmother")
     assert intention_data["character"] == "little_red"
     assert intention_data["target"] == "grandmother"
     assert intention_data["location"] == "cottage"
-    
+
     # Test get_dependency_data
     dependency_data = idg.get_dependency_data("deliver_basket", "visit_grandmother")
     assert dependency_data["type"] == "intentional"

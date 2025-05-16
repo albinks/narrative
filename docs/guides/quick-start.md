@@ -218,7 +218,7 @@ You can create custom metrics to rank trajectories according to your own criteri
 ```python
 class LengthMetric:
     """A metric that scores trajectories based on length."""
-    
+
     def score(self, trajectory):
         """Score a trajectory based on length."""
         return len(trajectory.intentions)

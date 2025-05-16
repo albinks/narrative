@@ -1,6 +1,5 @@
 """Generate the API reference pages."""
 
-
 import mkdocs_gen_files
 
 # Map of module paths to their corresponding documentation files

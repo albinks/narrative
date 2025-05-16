@@ -1,23 +1,26 @@
 """
-Narrative: A Python library that marries symbolic planning with large language models (LLMs) to create compelling narratives.
+Narrative: A Python library that marries symbolic planning with large language
+models (LLMs) to create compelling narratives.
 
-This library provides tools for building Intention Dependency Graphs (IDGs), exploring narrative trajectories,
+This library provides tools for building Intention Dependency Graphs (IDGs),
+exploring narrative trajectories,
 and rendering those trajectories into natural language stories using LLMs.
 """
 
 __version__ = "0.1.0"
 
-# Import key classes and functions for easy access
-from narrative.schemas.domain import Domain, Intention, Dependency
-from narrative.core.idg_builder import IDGBuilder, IDG
+from narrative.core.idg_builder import IDG, IDGBuilder
 from narrative.core.trajectory_explorer import (
-    TrajectoryExplorer,
-    Trajectory,
-    NoveltyMetric,
     CoherenceMetric,
     DramaMetric,
+    NoveltyMetric,
+    Trajectory,
+    TrajectoryExplorer,
 )
-from narrative.llm.llm_renderer import LLMRenderer, LLMAdapter, MockLLMAdapter
+from narrative.llm.llm_renderer import LLMAdapter, LLMRenderer, MockLLMAdapter
+
+# Import key classes and functions for easy access
+from narrative.schemas.domain import Dependency, Domain, Intention
 
 # Define what's available for import with `from narrative import *`
 __all__ = [

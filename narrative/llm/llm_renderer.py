@@ -1,12 +1,13 @@
 """
 LLM Renderer
 
-This module contains the LLMRenderer class, which renders trajectories into natural language
-stories using large language models (LLMs).
+This module contains the LLMRenderer class, which renders trajectories
+into natural language stories using large language models (LLMs).
 """
+# flake8: noqa: E501
 
-from typing import Dict, List, Any, Optional, Protocol
 from abc import ABC, abstractmethod
+from typing import Optional
 
 from narrative.core.trajectory_explorer import Trajectory
 
@@ -14,18 +15,19 @@ from narrative.core.trajectory_explorer import Trajectory
 class LLMAdapter(ABC):
     """
     Abstract base class for LLM adapters.
-    
-    An LLM adapter is responsible for communicating with a specific LLM API or service.
+
+    An LLM adapter is responsible for communicating with a
+    specific LLM API or service.
     """
-    
+
     @abstractmethod
     def generate(self, prompt: str) -> str:
         """
         Generate text from a prompt using an LLM.
-        
+
         Args:
             prompt: The prompt to send to the LLM.
-            
+
         Returns:
             The generated text.
         """
@@ -35,18 +37,18 @@ class LLMAdapter(ABC):
 class MockLLMAdapter(LLMAdapter):
     """
     A mock LLM adapter that returns a predefined response.
-    
-    This adapter is useful for testing and development when you don't want to make
-    actual API calls to an LLM service.
+
+    This adapter is useful for testing and development when you don't want to
+    make actual API calls to an LLM service.
     """
-    
+
     def generate(self, prompt: str) -> str:
         """
         Generate text from a prompt using a mock LLM.
-        
+
         Args:
             prompt: The prompt to send to the mock LLM.
-            
+
         Returns:
             A predefined response.
         """
@@ -130,36 +132,36 @@ And they all lived happily ever after.
 class OpenAIAdapter(LLMAdapter):
     """
     An adapter for the OpenAI API.
-    
+
     This adapter uses the OpenAI API to generate text from prompts.
     """
-    
+
     def __init__(self, api_key: str, model: str = "gpt-4"):
         """
         Initialize an OpenAIAdapter.
-        
+
         Args:
             api_key: The OpenAI API key.
             model: The model to use (default: "gpt-4").
         """
         try:
             import openai
-        except ImportError:
+        except ImportError as err:
             raise ImportError(
                 "OpenAI is required for this adapter. "
                 "Install it with 'pip install openai'."
-            )
-        
+            ) from err
+
         self.client = openai.OpenAI(api_key=api_key)
         self.model = model
-    
+
     def generate(self, prompt: str) -> str:
         """
         Generate text from a prompt using the OpenAI API.
-        
+
         Args:
             prompt: The prompt to send to the OpenAI API.
-            
+
         Returns:
             The generated text.
         """
@@ -167,76 +169,95 @@ class OpenAIAdapter(LLMAdapter):
             model=self.model,
             messages=[
                 {"role": "system", "content": "You are a creative storyteller."},
-                {"role": "user", "content": prompt}
+                {"role": "user", "content": prompt},
             ],
             temperature=0.7,
             max_tokens=2000,
         )
-        
-        return response.choices[0].message.content
+
+        content = response.choices[0].message.content
+        if content is None:
+            return ""
+        # Explicitly convert to string to satisfy mypy
+        return str(content)
 
 
 class LLMRenderer:
     """
-    Renderer class for converting trajectories into natural language stories using LLMs.
+    Renderer class for converting trajectories into natural language stories
+    using LLMs.
     """
-    
+
     def __init__(self, adapter: Optional[LLMAdapter] = None):
         """
         Initialize an LLMRenderer.
-        
+
         Args:
-            adapter: The LLM adapter to use. If not provided, a MockLLMAdapter will be used.
+            adapter: The LLM adapter to use. If not provided, a MockLLMAdapter
+                will be used.
         """
         self.adapter = adapter or MockLLMAdapter()
-    
+
     def render(self, trajectory: Trajectory) -> str:
         """
         Render a trajectory into a natural language story.
-        
+
         Args:
             trajectory: The trajectory to render.
-            
+
         Returns:
             A natural language story.
         """
         prompt = self._create_prompt(trajectory)
         response = self.adapter.generate(prompt)
         return self._process_response(response)
-    
+
     def _create_prompt(self, trajectory: Trajectory) -> str:
         """
         Create a prompt for the LLM from a trajectory.
-        
+
         Args:
             trajectory: The trajectory to create a prompt from.
-            
+
         Returns:
             A prompt for the LLM.
         """
-        prompt = "Create a coherent and engaging story based on the following sequence of intentions:\n\n"
-        
+        prompt = (
+            "Create a coherent and engaging story based on the following "
+            "sequence of intentions:\n\n"
+        )
+
         for i, intention in enumerate(trajectory.intentions):
-            prompt += f"{i+1}. {intention['character']} intends to {intention['id']} {intention['target']} at {intention['location']}"
-            
+            prompt += (
+                f"{i+1}. {intention['character']} intends to {intention['id']} "
+                f"{intention['target']} at {intention['location']}"
+            )
+
             if intention.get("description"):
                 prompt += f" {intention['description']}"
-            
+
             prompt += "\n"
-        
-        prompt += "\nThe story should follow this sequence of intentions, but feel free to add details, dialogue, and descriptions to make it engaging. The story should be coherent and flow naturally from one intention to the next."
-        
+
+        prompt += (
+            "\nThe story should follow this sequence of intentions, but feel free "
+            "to add details, dialogue, and descriptions to make it engaging. "
+            "The story should be coherent and flow naturally from one intention "
+            "to the next."
+        )
+
         return prompt
-    
+
     def _process_response(self, response: str) -> str:
         """
         Process the response from the LLM.
-        
+
         Args:
             response: The response from the LLM.
-            
+
         Returns:
             The processed response.
         """
         # For now, just return the response as is
-        return response
+        # We know response is already a string, so this is safe
+        processed_response: str = response
+        return processed_response
