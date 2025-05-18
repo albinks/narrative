@@ -36,6 +36,9 @@ markdown_extensions:
   - toc:
       permalink: true
 
+hooks:
+  - docs/mkdocs_plugins.py
+
 plugins:
   - search
   - autorefs
