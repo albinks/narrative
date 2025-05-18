@@ -5,8 +5,8 @@
 [![PyPI version](https://img.shields.io/pypi/v/narrative.svg)](https://pypi.org/project/narrative/)
 [![Python Version](https://img.shields.io/pypi/pyversions/narrative.svg)](https://pypi.org/project/narrative/)
 [![License](https://img.shields.io/pypi/l/narrative.svg)](https://github.com/org/narrative/blob/main/LICENSE)
-[![CI](https://github.com/org/narrative/actions/workflows/ci.yml/badge.svg)](https://github.com/org/narrative/actions/workflows/ci.yml)
-[![Documentation](https://github.com/org/narrative/actions/workflows/docs-build.yml/badge.svg)](https://org.github.io/narrative)
+[![CI](https://github.com/albinks/narrative/actions/workflows/ci.yml/badge.svg)](https://github.com/albinks/narrative/actions/workflows/ci.yml)
+[![Documentation](https://github.com/albinks/narrative/actions/workflows/docs-build.yml/badge.svg)](https://github.com/albinks/narrative/actions/workflows/docs-build.yml)
 
 ## Overview
 
