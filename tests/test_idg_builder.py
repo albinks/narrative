@@ -201,14 +201,14 @@ def test_idg_methods():
 
     # Test get_root_intentions
     root_intentions = idg.get_root_intentions()
-    assert len(root_intentions) == 1
-    assert "visit_grandmother" in root_intentions
+    assert len(root_intentions) == 2
+    assert "deliver_basket" in root_intentions
+    assert "eat_little_red" in root_intentions
 
     # Test get_leaf_intentions
     leaf_intentions = idg.get_leaf_intentions()
-    assert len(leaf_intentions) == 2
-    assert "deliver_basket" in leaf_intentions
-    assert "eat_little_red" in leaf_intentions
+    assert len(leaf_intentions) == 1
+    assert "visit_grandmother" in leaf_intentions
 
     # Test get_intention_data
     intention_data = idg.get_intention_data("visit_grandmother")

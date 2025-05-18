@@ -8,7 +8,7 @@ A domain consists of characters, locations, intentions, and dependencies between
 
 from typing import Any, Dict, List, Literal, Optional, Union
 
-from pydantic import BaseModel, validator
+from pydantic import BaseModel, field_validator
 
 
 class Intention(BaseModel):
@@ -73,25 +73,22 @@ class Domain(BaseModel):
     description: Optional[str] = None
     metadata: Optional[Dict[str, Any]] = None
 
-    @validator("intentions", pre=True, each_item=True)
+    @classmethod
+    @field_validator("intentions")
     def validate_intentions(cls, v: Any) -> Union[Intention, Any]:
         """Validate and convert intentions to Intention objects."""
         if isinstance(v, dict):
             return Intention(**v)
         return v
 
-    @validator("dependencies", pre=True, each_item=True)
+    @classmethod
+    @field_validator("dependencies")
     def validate_dependencies(cls, v: Any) -> Union[Dependency, Any]:
         """Validate and convert dependencies to Dependency objects."""
         if isinstance(v, dict):
             return Dependency(**v)
         return v
 
-    class Config:
-        """Configuration for the Domain model."""
-
-        arbitrary_types_allowed = True
-        json_encoders = {
-            Intention: lambda v: v.model_dump(),
-            Dependency: lambda v: v.model_dump(),
-        }
+    model_config = {
+        "arbitrary_types_allowed": True,
+    }
