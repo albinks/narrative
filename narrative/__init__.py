@@ -7,7 +7,7 @@ exploring narrative trajectories,
 and rendering those trajectories into natural language stories using LLMs.
 """
 
-__version__ = "0.1.0"
+__version__ = "0.2.0"
 
 from narrative.core.idg_builder import IDG, IDGBuilder
 from narrative.core.trajectory_explorer import (
