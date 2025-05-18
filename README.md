@@ -135,11 +135,73 @@ Pre-commit will now run automatically on every commit to ensure code quality. Th
 - mypy (static type checking)
 - ruff (linting)
 - isort (import sorting)
+- commitizen (commit message formatting and version checking)
 
 You can also run the hooks manually on all files:
 ```bash
 poetry run pre-commit run --all-files
 ```
+
+## Versioning
+
+Narrative follows [Semantic Versioning](https://semver.org/) (SemVer). Version numbers follow the format `MAJOR.MINOR.PATCH`:
+
+- **MAJOR** version increases when incompatible API changes are made
+- **MINOR** version increases when functionality is added in a backward-compatible manner
+- **PATCH** version increases when backward-compatible bug fixes are made
+
+### Commit Message Format
+
+We use [Conventional Commits](https://www.conventionalcommits.org/) for commit messages to automate version management and changelog generation. Each commit message should be structured as follows:
+
+```
+<type>[optional scope]: <description>
+
+[optional body]
+
+[optional footer(s)]
+```
+
+Types include:
+- `feat`: A new feature (increments MINOR version)
+- `fix`: A bug fix (increments PATCH version)
+- `docs`: Documentation changes only
+- `style`: Changes that don't affect code meaning (formatting, etc.)
+- `refactor`: Code changes that neither fix bugs nor add features
+- `perf`: Performance improvements
+- `test`: Adding or correcting tests
+- `build`: Changes to build system or dependencies
+- `ci`: Changes to CI configuration
+- `chore`: Other changes that don't modify src or test files
+
+Breaking changes should be indicated by adding `!` after the type/scope or by adding a footer `BREAKING CHANGE: description`. This will increment the MAJOR version.
+
+Example:
+```
+feat(idg): add support for conditional dependencies
+
+This adds the ability to define dependencies that only activate under certain conditions.
+
+BREAKING CHANGE: The dependency format in the Domain class has changed to accommodate conditions.
+```
+
+### Version Management
+
+Versioning is managed using [Commitizen](https://commitizen-tools.github.io/commitizen/). The current version is maintained in both `pyproject.toml` and `narrative/__init__.py`.
+
+To bump the version based on your commits:
+```bash
+poetry run cz bump
+```
+
+This will:
+1. Determine the new version based on commit types since the last tag
+2. Update version numbers in all configured files
+3. Create a new commit with the version change
+4. Create a new tag
+5. Update the CHANGELOG.md file
+
+For more details, see the [CHANGELOG.md](CHANGELOG.md) file.
 
 ## Contributing
 

@@ -46,6 +46,7 @@ ruff = "^0.1"
 black = "^23.11"
 isort = "^5.12"
 pre-commit = "^3.5"
+commitizen = "^3.12"
 
 [tool.poetry.group.docs.dependencies]
 mkdocs = "^1.5"
@@ -95,3 +96,13 @@ testpaths = ["tests"]
 python_files = "test_*.py"
 python_classes = "Test*"
 python_functions = "test_*"
+
+[tool.commitizen]
+name = "cz_conventional_commits"
+version = "0.1.0"
+tag_format = "v$version"
+version_files = [
+    "pyproject.toml:version",
+    "narrative/__init__.py:__version__"
+]
+update_changelog_on_bump = true
