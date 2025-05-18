@@ -1,0 +1,88 @@
+site_name: Narrative
+site_description: A Python library that marries symbolic planning with large language models (LLMs) to create compelling narratives
+site_url: https://org.github.io/narrative
+repo_url: https://github.com/org/narrative
+repo_name: org/narrative
+
+theme:
+  name: material
+  palette:
+    primary: indigo
+    accent: amber
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.expand
+    - navigation.indexes
+    - navigation.top
+    - search.highlight
+    - search.share
+    - content.code.annotate
+    - content.tabs.link
+  icon:
+    repo: fontawesome/brands/github
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - codehilite
+  - footnotes
+  - pymdownx.details
+  - pymdownx.highlight
+  - pymdownx.superfences
+  - pymdownx.tabbed
+  - pymdownx.tasklist
+  - pymdownx.emoji
+  - toc:
+      permalink: true
+
+hooks:
+  - docs/mkdocs_plugins.py
+
+plugins:
+  - search
+  - autorefs
+  - mkdocstrings:
+      handlers:
+        python:
+          selection:
+            docstring_style: google
+          rendering:
+            show_source: true
+            show_root_heading: true
+            show_root_full_path: false
+            show_if_no_docstring: false
+            heading_level: 2
+  - gen-files:
+      scripts:
+        - docs/gen_ref_pages.py
+  - literate-nav:
+      nav_file: SUMMARY.md
+  - section-index
+
+nav:
+  - Home: index.md
+  - Guides:
+      - Installation: guides/installation.md
+      - Quick Start: guides/quick-start.md
+      - Core Concepts: guides/concepts.md
+      - Documentation: guides/documentation.md
+  - API Reference:
+      - IDG Engine: api/idg-engine.md
+      - Trajectory Explorer: api/trajectory-explorer.md
+      - LLM Bridge: api/llm-bridge.md
+  - Examples:
+      - Little Red Riding Hood: examples/little-red.md
+      - Custom Domains: examples/custom-domains.md
+      - Advanced Usage: examples/advanced-usage.md
+  - Contributing: contributing.md
+  - Changelog: changelog.md
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/org/narrative
+    - icon: fontawesome/brands/python
+      link: https://pypi.org/project/narrative/
+
+copyright: Copyright &copy; 2025
