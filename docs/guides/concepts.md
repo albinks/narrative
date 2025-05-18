@@ -4,7 +4,7 @@ This guide explains the core concepts behind Narrative and how they work togethe
 
 ## Overview
 
-Narrative is built around several key concepts:
+Narrative is built around several key concepts that were introduced in the [AAAI paper on Intention Dependency Graphs](https://cdn.aaai.org/ojs/12989/12989-52-16506-1-2-20201228.pdf):
 
 1. **Domains**: The narrative world, including characters, locations, and intentions
 2. **Intentions**: Goals or desires that characters have
@@ -84,7 +84,7 @@ There are two types of dependencies:
 
 ## Intention Dependency Graphs (IDGs)
 
-An Intention Dependency Graph (IDG) is a directed graph where nodes represent intentions and edges represent dependencies between intentions. It's built from a domain using the IDGBuilder class.
+An Intention Dependency Graph (IDG) is a directed graph where nodes represent intentions and edges represent dependencies between intentions. This concept was introduced in the [original research paper](https://cdn.aaai.org/ojs/12989/12989-52-16506-1-2-20201228.pdf) as a way to model narrative structures. IDGs are built from a domain using the IDGBuilder class.
 
 ```python
 from narrative import IDGBuilder
@@ -193,3 +193,9 @@ Now that you understand the core concepts of Narrative, you can:
 - Follow the [Quick Start Guide](quick-start.md) to create your first narrative
 - Explore the [API Reference](../api/idg-engine.md) for detailed documentation
 - Check out more examples in the [Examples](../examples/little-red.md) section
+
+## Further Reading
+
+For a deeper understanding of the theoretical foundations of Narrative, we recommend reading the original research paper:
+
+- [Intention Dependency Graphs for Interactive Narrative Generation](https://cdn.aaai.org/ojs/12989/12989-52-16506-1-2-20201228.pdf) - This paper introduces the concept of Intention Dependency Graphs (IDGs) and explains how they can be used to generate coherent and engaging narratives.

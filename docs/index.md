@@ -5,14 +5,16 @@
 [![PyPI version](https://img.shields.io/pypi/v/narrative.svg)](https://pypi.org/project/narrative/)
 [![Python Version](https://img.shields.io/pypi/pyversions/narrative.svg)](https://pypi.org/project/narrative/)
 [![License](https://img.shields.io/pypi/l/narrative.svg)](https://github.com/org/narrative/blob/main/LICENSE)
-[![CI](https://github.com/org/narrative/actions/workflows/ci.yml/badge.svg)](https://github.com/org/narrative/actions/workflows/ci.yml)
-[![Documentation](https://github.com/org/narrative/actions/workflows/docs-build.yml/badge.svg)](https://org.github.io/narrative)
+[![CI](https://github.com/albinks/narrative/actions/workflows/ci.yml/badge.svg)](https://github.com/albinks/narrative/actions/workflows/ci.yml)
+[![Documentation](https://github.com/albinks/narrative/actions/workflows/docs-build.yml/badge.svg)](https://github.com/albinks/narrative/actions/workflows/docs-build.yml)
 
 ## Overview
 
 Narrative is an open-source Python library that combines symbolic planning with large language models (LLMs) to keep interactive narratives coherent, reactive, and designer-friendly.
 
 It transforms domain definitions into Intention Dependency Graphs (IDGs), serves up exemplar story branches in milliseconds, and hands those skeletons to an LLM to render rich prose or dialogue.
+
+This library is based on the research presented in [this AAAI paper](https://cdn.aaai.org/ojs/12989/12989-52-16506-1-2-20201228.pdf), which introduces the concept of Intention Dependency Graphs for narrative generation.
 
 ## Features
 
@@ -108,3 +110,28 @@ Contributions are welcome! See the [Contributing Guide](contributing.md) for mor
 ## License
 
 Narrative is licensed under the MIT License. See the [LICENSE](https://github.com/org/narrative/blob/main/LICENSE) file for more information.
+
+## Citation
+
+If you use Narrative in your research, please cite it as:
+
+```bibtex
+@software{narrative2025,
+  author = {Narrative Contributors},
+  title = {Narrative: A Python library for narrative generation},
+  year = {2025},
+  url = {https://github.com/org/narrative},
+}
+```
+
+Please also cite the original research paper that this library is based on:
+
+```bibtex
+@inproceedings{idg2020,
+  title = {Intention Dependency Graphs for Interactive Narrative Generation},
+  author = {Paper Authors},
+  booktitle = {Proceedings of the AAAI Conference on Artificial Intelligence},
+  year = {2020},
+  url = {https://cdn.aaai.org/ojs/12989/12989-52-16506-1-2-20201228.pdf}
+}
+```
