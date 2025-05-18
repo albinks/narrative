@@ -4,7 +4,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
 name = "narrative"
-version = "0.2.0"
+version = "0.2.1"
 description = "A Python library that marries symbolic planning with large language models (LLMs) to create compelling narratives"
 authors = ["Your Name <your.email@example.com>"]
 license = "MIT"
@@ -100,7 +100,7 @@ python_functions = "test_*"
 
 [tool.commitizen]
 name = "cz_conventional_commits"
-version = "0.2.0"
+version = "0.2.1"
 tag_format = "v$version"
 version_files = [
     "pyproject.toml:version",
