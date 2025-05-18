@@ -1,8 +1,9 @@
 """
 Little Red Riding Hood Example
 
-This example demonstrates how to use Narrative to create a simple narrative based on
-the Little Red Riding Hood story.
+This example demonstrates how to use Narrative to create a simple narrative
+    based on
+    the Little Red Riding Hood story.
 """
 
 from narrative.core.idg_builder import IDGBuilder
