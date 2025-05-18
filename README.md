@@ -14,6 +14,8 @@ Narrative is an open-source Python library that combines symbolic planning with 
 
 It transforms domain definitions into Intention Dependency Graphs (IDGs), serves up exemplar story branches in milliseconds, and hands those skeletons to an LLM to render rich prose or dialogue.
 
+This library is based on the research presented in [this AAAI paper](https://cdn.aaai.org/ojs/12989/12989-52-16506-1-2-20201228.pdf), which introduces the concept of Intention Dependency Graphs for narrative generation.
+
 ## Features
 
 - **Domain Modeling**: Define narrative domains with characters, locations, intentions, and dependencies
@@ -229,5 +231,17 @@ If you use Narrative in your research, please cite it as:
   title = {Narrative: A Python library for narrative generation},
   year = {2025},
   url = {https://github.com/org/narrative},
+}
+```
+
+Please also cite the original research paper that this library is based on:
+
+```bibtex
+@inproceedings{idg2020,
+  title = {Intention Dependency Graphs for Interactive Narrative Generation},
+  author = {Paper Authors},
+  booktitle = {Proceedings of the AAAI Conference on Artificial Intelligence},
+  year = {2020},
+  url = {https://cdn.aaai.org/ojs/12989/12989-52-16506-1-2-20201228.pdf}
 }
 ```
